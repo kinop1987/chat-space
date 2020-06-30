@@ -4,9 +4,9 @@
 |:-------|-----:|:-------:|
 |name|string|null: false|
 |emal|string|unique: true|
-|user_group|integer|null: false, foreign_key: true|
 ### Association
 - has_many :groups, through: :users_groups
+- has_many :users_groups
 - has_many :messages
 
 ## gropsテーブル
@@ -14,9 +14,9 @@
 | Column | Type | Options |
 |:-------|-----:|:-------:|
 |group|string|null: false|
-|user_group|integer|null: false, foreign_key: true|
 ### Associtation
 - has_many :users, through: :users_groups
+- has_many :users_groups
 - has_many :messages
 
 ## user_groupテーブル
