@@ -5,29 +5,17 @@
         = current_user.name
       %ul.SideHeader__iconList
         %li.SideHeader__icon 
-          = link_to "#" do
+          = link_to new_group_path do
             = icon('fas', 'edit')
         %li.SideHeader__icon
           = link_to edit_user_path(current_user) do
             = icon('fas', 'cog')
   .GroupList
-    .Group
-      = link_to "#" do
-        .Group__name
-          techcamp
-        .Group__message
-          まだメッセージがありません
-    .Group
-      = link_to "#" do
-        .Group__name
-          techcamp
-        .Group__message
-          まだメッセージがありません
-    .Group
-      = link_to "#" do
-        .Group__name
-          techcamp
-        .Group__message
-          まだメッセージがありません
-
+    - current_user.groups.each do |group|
+      .Group
+        = link_to "#" do
+          .Group__name
+            = group.name
+          .Group__message
+            まだメッセージがありません
     
