@@ -1,8 +1,10 @@
 $(function(){
+  let last_message_id = $('.MessageBox:last').data("message-id");
+  console.log(last_message_id)
   function buildHTML(message){
     if ( message.image ) {
       let html =
-        `<div class="MessageBox">
+        `<div class="MessageBox" data-message-id=${message.id}>
           <div class="InfoBox">
             <div class="InfoBox__userName">
               ${message.user_name}
@@ -21,7 +23,7 @@ $(function(){
       return html;
     } else {
       let html =
-      `<div class="MessageBox">
+      `<div class="MessageBox" data-message-id=${message.id}>
         <div class="InfoBox">
           <div class="InfoBox__userName">
             ${message.user_name}
@@ -55,12 +57,13 @@ $(function(){
       .done(function(data){
         let html = buildHTML(data);
         $('.MainMessage').append(html);
-        $('.MainMessage').animate({ scrollTop: $('.MainMessage')[0].scrollHeight});
         $('form')[0].reset();
-        $('form.submit, :input').removeAttr('disabled');
+        $('.MainMessage').animate({ scrollTop: $('.MainMessage')[0].scrollHeight});
+        $('.Form__submit').prop("disabled", false);
       })
       .fail(function() {
         alert("メッセージ送信に失敗しました");
+        $('.Form__submit').prop("disabled", false);
       });
     });
 });
