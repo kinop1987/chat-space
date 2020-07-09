@@ -35,7 +35,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.0.beta2'
-  gem 'devise'
+  
   gem 'factory_bot_rails'
   gem 'faker', "~> 2.8"
   gem 'rails-controller-testing'
@@ -69,6 +69,7 @@ group :production do
 end
 
 gem 'fog-aws'
+gem 'devise'
 
 group :development, :test do
   gem 'capistrano'
